@@ -1,93 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>shop_vue</title>
     <script src="vue.js"></script>
     <script defer src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="wrapper">
-
-
-        <div class="top">
-            <div id="app">
-                <header>
-                    <div class="header-box">
-                        <nav class="header-menu">
-                            <a class="header-menu-item" href="index.html">Главная</a>
-                            <search v-on:search="onSearch"></search>
-                            <button class="cart-button" type="button" v-on:click="onToggleCart">Корзина</button>
-                        </nav>
-                    </div>
-
-
-                </header>
-                <main>
-                    <section class="goods">
-                        <h3 class="goods-head">Каталог товаров</h3>
-
-                        <div class="goods-list">
-                            <template v-if="this.filteredGoods.length > 0">
-                                <goods-list v-bind:list="filteredGoods" v-on:add="addToCart"></goods-list>
-                            </template>
-                            <template v-else>
-                                <h3 class="h3-item">Список пуст</h3>
-                            </template>
-                        </div>
-
-                    </section>
-                    <section>
-                        <cart class="cart-box" v-bind:isVisibleCart="isVisibleCart" v-bind:cart="cart"
-                            v-on:remove="removeFromCart" v-on:close="onToggleCart" v-if="isVisibleCart"></cart>
-                    </section>
-                </main>
+      <div class="top">
+        <div id="app">
+          <header>
+            <div class="header-box">
+              <nav class="header-menu">
+                <a class="header-menu-item" href="index.html">Главная</a>
+                <search v-on:search="onSearch"></search>
+                <button
+                  class="cart-button"
+                  type="button"
+                  v-on:click="onToggleCart"
+                >
+                  Корзина
+                </button>
+              </nav>
             </div>
+          </header>
+          <main>
+            <section class="goods">
+              <h3 class="goods-head">Каталог товаров</h3>
+
+              <div class="goods-list">
+                <template v-if="this.filteredGoods.length > 0">
+                  <goods-list
+                    v-bind:list="filteredGoods"
+                    v-on:add="addToCart"
+                  ></goods-list>
+                </template>
+                <template v-else>
+                  <h3 class="h3-item">Список пуст</h3>
+                </template>
+              </div>
+            </section>
+            <section>
+              <cart
+                class="cart-box"
+                v-bind:isVisibleCart="isVisibleCart"
+                v-bind:cart="cart"
+                v-on:remove="removeFromCart"
+                v-on:close="onToggleCart"
+                v-if="isVisibleCart"
+              ></cart>
+            </section>
+          </main>
         </div>
-
-
-
-        <footer>
-            <div class="footer-box">
-                <nav class="footer-menu">
-                    <a class="footer-menu-item" href="index.html">Главная</a>
-                    <button class="footer-mail-btn" onclick="onMailForm()">Отправить сообщение</button>
-                </nav>
-                <form id="form">
-                    <div class="mail-form" id="mail-form">
-                        <div class="mail-form-box" id="fform">
-                            <input class="mail-form-input" type="text" id="nname" placeholder="Ваше имя">
-                            <input class="mail-form-input" type="text" id="pphone"
-                                placeholder="Ваш телефон +7(000)000-0000">
-                            <input class="mail-form-input" type="text" id="eemail" placeholder="Ваш адрес e-mail">
-                            <textarea class="mail-form-text" name="mail-text" id="mail-text" cols="30" rows="10"
-                                placeholder="Введите текст сообщения"></textarea>
-
-                            <p class="p-error" id="eerror"></p>
-                            <div class="form-buttons">
-                                <button class="reset-btn" type="reset" onclick="onReset()">Исправить</button>
-                                <input class="submit-mail-btn" type="submit" id="submit" value="Отправить">
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </form>
+      </div>
+      <footer>
+        <div class="footer-box">
+          <nav class="footer-menu">
+            <a class="footer-menu-item" href="index.html">Главная</a>
+            <button class="footer-mail-btn" onclick="onMailForm()">
+              Отправить сообщение
+            </button>
+          </nav>
+          <form id="form">
+            <div class="mail-form" id="mail-form">
+              <div class="mail-form-box" id="fform">
+                <input
+                  class="mail-form-input"
+                  type="text"
+                  id="nname"
+                  placeholder="Ваше имя"
+                />
+                <input
+                  class="mail-form-input"
+                  type="text"
+                  id="pphone"
+                  placeholder="Ваш телефон +7(000)000-0000"
+                />
+                <input
+                  class="mail-form-input"
+                  type="text"
+                  id="eemail"
+                  placeholder="Ваш адрес e-mail"
+                />
+                <textarea
+                  class="mail-form-text"
+                  name="mail-text"
+                  id="mail-text"
+                  cols="30"
+                  rows="10"
+                  placeholder="Введите текст сообщения"
+                ></textarea>
+                <p class="p-error" id="eerror"></p>
+                <div class="form-buttons">
+                  <button class="reset-btn" type="reset" onclick="onReset()">
+                    Исправить
+                  </button>
+                  <input
+                    class="submit-mail-btn"
+                    type="submit"
+                    id="submit"
+                    value="Отправить"
+                  />
+                </div>
+              </div>
             </div>
-
-        </footer>
-
+          </form>
+        </div>
+      </footer>
     </div>
-
-
-
-</body>
-
+  </body>
 </html>
